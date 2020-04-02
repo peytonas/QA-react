@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import auth0Client from './Auth';
+import './Nav.css';
 
 function NavBar(props) {
   const signOut = () => {
@@ -9,8 +10,8 @@ function NavBar(props) {
   };
 
   return (
-    <nav className="navbar navbar-dark bg-primary fixed-top">
-      <Link className="navbar-brand" to="/">
+    <nav className="navbar bg-primary fixed-top">
+      <Link className="navbar-brand text-dark" to="/">
         Q&A
       </Link>
       {
@@ -20,8 +21,10 @@ function NavBar(props) {
       {
         auth0Client.isAuthenticated() &&
         <div>
-          <label className="mr-2 text-white">{auth0Client.getProfile().name}</label>
-          <button className="btn btn-dark" onClick={() => { signOut() }}>Sign Out</button>
+          <Link className="navbar-brand text-dark" to="/profile">
+            <label className="mr-2">{auth0Client.getProfile().nickname}</label>
+          </Link>
+          <button className="btn btn-danger" onClick={() => { signOut() }}>Sign Out</button>
         </div>
       }
     </nav>

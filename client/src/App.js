@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import NavBar from './Navbar';
 import Question from './Question';
 import Questions from './Questions';
+import Profile from './Profile'
 import Callback from './Callback';
 import NewQuestion from './NewQuestion';
 import SecuredRoute from './SecuredRoute';
@@ -30,9 +31,10 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="text-dark">
         <NavBar />
         <Route exact path='/' component={Questions} />
+        <Route exact path='/profile' component={Profile} />
         <Route exact path='/question/:questionId' component={Question} />
         <Route exact path='/callback' component={Callback} />
         <SecuredRoute path='/new-question'
